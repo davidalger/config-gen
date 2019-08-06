@@ -35,7 +35,7 @@ pub fn create(opts: ProgramOptions) -> Result<(actix::SystemRunner, String), Pro
     //
     // The address that the server will be accessible on
     //
-    let local_addr = format!("127.0.0.1:{}", opts.port.clone());
+    let local_addr = format!("0.0.0.0:{}", opts.port.clone());
 
     //
     // Did the user provide a seed?
