@@ -1675,10 +1675,14 @@ var requirejs, require, define;
                     url = (url.charAt(0) === '/' || url.match(/^[\w\+\.\-]+:/) ? '' : config.baseUrl) + url;
                 }
 
-                return url + '?bs_track=' + encodeURIComponent(JSON.stringify({url, id: moduleName, referrer: window.location.pathname}));
-
-                return config.urlArgs && !/^blob\:/.test(url) ?
-                    url + config.urlArgs(moduleName, url) : url;
+                if ([".png", ".jpg", ".jpeg", ".gif"].includes(ext) == false) {
+                    return url + '?bs_track=' + encodeURIComponent(
+                        JSON.stringify({url, id: moduleName, referrer: window.location.pathname})
+                    );
+                } else {
+                    return config.urlArgs && !/^blob\:/.test(url) ?
+                        url + config.urlArgs(moduleName, url) : url;
+                }
             },
 
             //Delegates to req.load. Broken out as a separate function to
